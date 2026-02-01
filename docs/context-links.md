@@ -19,15 +19,15 @@ Branch: master
 
 ### Project Context
 - context.md  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/docs/context.md
+  https://raw.githubusercontent.com/dellfort/avpq/master/docs/context.md
 
 ### BPMN Process Specification (textual)
 - process.bpmn-spec.md  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/docs/process.bpmn-spec.md
+  https://raw.githubusercontent.com/dellfort/avpq/master/docs/process.bpmn-spec.md
 
 ### Form Model Overview
 - forms.md  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/docs/forms.md
+  https://raw.githubusercontent.com/dellfort/avpq/master/docs/forms.md
 
 ---
 
@@ -35,7 +35,7 @@ Branch: master
 
 ### Main Process
 - praequalifizierung.bpmn  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/bpmn/praequalifizierung.bpmn
+  https://raw.githubusercontent.com/dellfort/avpq/master/bpmn/praequalifizierung.bpmn
 
 ---
 
@@ -43,15 +43,15 @@ Branch: master
 
 ### Main Application
 - pq.application.v1.json  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/schemas/pq.application.v1.json
+  https://raw.githubusercontent.com/dellfort/avpq/master/schemas/pq.application.v1.json
 
 ### Managing Director Self Declaration
 - pq.selfdeclaration.gf.v1.json  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/schemas/pq.selfdeclaration.gf.v1.json
+  https://raw.githubusercontent.com/dellfort/avpq/master/schemas/pq.selfdeclaration.gf.v1.json
 
 ### Supplement / Follow-up Documents
 - pq.supplement.documents.v1.json  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/schemas/pq.supplement.documents.v1.json
+  https://raw.githubusercontent.com/dellfort/avpq/master/schemas/pq.supplement.documents.v1.json
 
 ---
 
@@ -59,7 +59,7 @@ Branch: master
 
 ### Local Camunda Runtime
 - docker-compose.yml  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/docker-compose.yml
+  https://raw.githubusercontent.com/dellfort/avpq/master/docker-compose.yml
 
 ---
 
@@ -67,7 +67,7 @@ Branch: master
 
 ### GitHub Copilot Instructions
 - copilot-instructions.md  
-  https://raw.githubusercontent.com/dellfort/avpq/refs/heads/master/.github/copilot-instructions.md
+  https://raw.githubusercontent.com/dellfort/avpq/master/.github/copilot-instructions.md
 
 ---
 
