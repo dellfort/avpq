@@ -63,6 +63,35 @@ npm install
 npm run dev
 ```
 
+### Local Development – Run Camunda
+
+The fastest way to get a local Camunda 7 instance running is with Docker Compose:
+
+#### Prerequisites
+- Docker and Docker Compose installed
+
+#### Start Camunda
+
+```bash
+docker compose up
+```
+
+Once running, access the Camunda Web UI at:
+
+**http://localhost:8080/camunda**
+
+#### Default Credentials
+- **Username**: `demo`
+- **Password**: `demo`
+
+#### Stop Camunda
+
+```bash
+docker compose down
+```
+
+**Note**: The H2 in-memory database is reset on container restart. For persistent storage, upgrade the `docker-compose.yml` configuration.
+
 ### Building
 
 ```bash

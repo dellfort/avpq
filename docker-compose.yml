@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  camunda:
+    image: camunda/camunda-bpm-platform:7.18-latest
+    container_name: avpq-camunda
+    ports:
+      - "8080:8080"
+    environment:
+      DB_DRIVER: org.h2.Driver
+      DB_URL: jdbc:h2:mem:camunda;DB_CLOSE_DELAY=-1;MVCC=TRUE
+      DB_USERNAME: sa
+      DB_PASSWORD: sa
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/camunda/app/welcome/default/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
