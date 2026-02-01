@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://avpq.example.de/schemas/pq.supplement.documents.v1.json",
+  "title": "Nachforderung - Zusatzdokumente",
+  "description": "JSON Schema für die Anforderung zusätzlicher Dokumente während des Vorqualifizierungsprozesses",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Eindeutige ID der Nachforderung"
+    },
+    "applicationRef": {
+      "type": "string",
+      "description": "Referenz zum ursprünglichen Antrag"
+    },
+    "requiredDocuments": {
+      "type": "array",
+      "description": "Liste der angeforderten Dokumente mit Beschreibungen"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Frist für die Einreichung"
+    }
+  },
+  "required": ["requestId", "applicationRef", "requiredDocuments", "deadline"],
+  "additionalProperties": false
+}

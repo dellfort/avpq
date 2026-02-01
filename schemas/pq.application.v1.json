@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://avpq.example.de/schemas/pq.application.v1.json",
+  "title": "Digitale Vorqualifizierung - Unternehmensantrag",
+  "description": "JSON Schema für die Hauptanwendung der digitalen Vorqualifizierung durch Unternehmen",
+  "type": "object",
+  "properties": {
+    "applicationId": {
+      "type": "string",
+      "description": "Eindeutige Antragsnummer"
+    },
+    "companyData": {
+      "type": "object",
+      "description": "Grunddaten des antragstellenden Unternehmens"
+    },
+    "managingDirectors": {
+      "type": "array",
+      "description": "Liste der Geschäftsführer (Eigenerklärungen erforderlich)"
+    }
+  },
+  "required": ["applicationId", "companyData"],
+  "additionalProperties": false
+}

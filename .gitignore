@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# TypeScript
+dist/
+*.tsbuildinfo
+*.js
+*.js.map
+*.d.ts
+!jest.config.js
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build & Test
+build/
+coverage/
+.nyc_output/
+junit.xml
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Camunda
+camunda/logs/
+camunda/*.dat
+
+# OS
+Thumbs.db
+.DS_Store
