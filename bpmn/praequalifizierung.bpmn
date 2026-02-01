@@ -1,27 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Camunda 7 BPMN 2.0 Process Definition: Digitale Vorqualifizierung (AVPQ)
-  
-  This is a placeholder for the main pre-qualification process.
-  
-  Key process elements:
-  - Applicant company submission
-  - Parallel self-declarations from managing directors
-  - Document validation by ABSt (external examination body)
-  - Final decision by IHK (chamber of commerce)
-  - Message correlation for external events (e.g., supplementary documents)
-  
-  All forms are dynamically generated from JSON Schema (see schemas/ directory).
-  No static UI forms are referenced in this process definition.
--->
-<bpmn2:definitions
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://www.omg.org/bpmn20"
-  xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
-  xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
-
-<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/20100524/BPMN20.xsd">
+  <bpmn:process id="avpq_praequalifizierung_v1" name="AVPQ Vorqualifizierung" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Task_CompanyApplication" name="Company application" camunda:formKey="pq.application.v1">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_SelfDeclaration" name="Managing director self-declaration" camunda:formKey="pq.selfdeclaration.gf.v1">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_ValidateApplication" name="Validate application (ABSt)" camunda:type="external" camunda:topic="validate-application-documents">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Task_IHKDecision" name="IHK decision" camunda:formKey="pq.decision">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_1" name="End">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_CompanyApplication"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_CompanyApplication" targetRef="Task_SelfDeclaration"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_SelfDeclaration" targetRef="Task_ValidateApplication"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_ValidateApplication" targetRef="Task_IHKDecision"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_IHKDecision" targetRef="EndEvent_1"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="avpq_praequalifizierung_v1">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="102" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="178" y="138" width="24" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CompanyApplication_di" bpmnElement="Task_CompanyApplication">
+        <dc:Bounds x="270" y="80" width="100" height="80"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="280" y="110" width="80" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SelfDeclaration_di" bpmnElement="Task_SelfDeclaration">
+        <dc:Bounds x="430" y="80" width="100" height="80"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="440" y="105" width="80" height="30"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ValidateApplication_di" bpmnElement="Task_ValidateApplication">
+        <dc:Bounds x="590" y="80" width="100" height="80"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="595" y="110" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_IHKDecision_di" bpmnElement="Task_IHKDecision">
+        <dc:Bounds x="750" y="80" width="100" height="80"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="770" y="110" width="60" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="912" y="102" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="920" y="138" width="20" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="208" y="120"/>
+        <di:waypoint x="270" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="370" y="120"/>
+        <di:waypoint x="430" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="530" y="120"/>
+        <di:waypoint x="590" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="690" y="120"/>
+        <di:waypoint x="750" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="850" y="120"/>
+        <di:waypoint x="912" y="120"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+ xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/20100524/BPMN20.xsd">
   <bpmn:process id="avpq_praequalifizierung_v1" name="AVPQ Vorqualifizierung" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Start">
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
