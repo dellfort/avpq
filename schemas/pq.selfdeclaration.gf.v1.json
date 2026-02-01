@@ -9,15 +9,53 @@
       "type": "string",
       "description": "Eindeutige ID der Eigenerklärung"
     },
-    "applicantName": {
-      "type": "string",
-      "description": "Name des Geschäftsführers"
-    },
-    "declarations": {
+    "managingDirector": {
       "type": "object",
-      "description": "Angaben zur Eigenerklärung (z.B. Ausschlussgründe nach VOL/B)"
+      "description": "Angaben zum Geschäftsführer",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "Vorname"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Nachname"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date",
+          "description": "Geburtsdatum (YYYY-MM-DD)"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "dateOfBirth"
+      ]
+    },
+    "declaration": {
+      "type": "object",
+      "description": "Erklärungen und Bestätigungen",
+      "properties": {
+        "noCriminalOffenses": {
+          "type": "boolean",
+          "description": "Keine Eintragungen im Führungszeugnis"
+        },
+        "consent": {
+          "type": "boolean",
+          "description": "Zustimmung zur Verarbeitung personenbezogener Daten"
+        }
+      },
+      "required": [
+        "noCriminalOffenses",
+        "consent"
+      ]
     }
   },
-  "required": ["declarationId", "applicantName"],
+  "required": [
+    "declarationId",
+    "managingDirector",
+    "declaration"
+  ],
   "additionalProperties": false
-}
+}}

@@ -34,7 +34,7 @@
       <bpmn:incoming>Flow_2</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_ValidateApplication" name="Validate application (ABSt)" camunda:type="external" camunda:topic="validate-application">
+    <bpmn:serviceTask id="Task_ValidateApplication" name="Validate application (ABSt)" camunda:type="external" camunda:topic="validate-application-documents">
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:serviceTask>
